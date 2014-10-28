@@ -1,0 +1,17 @@
+﻿@model NestedModels.Models.Employee
+
+@Html.HiddenFor(model => model.EmployeeId)
+
+<p>
+  <label>Name</label>
+  @Html.TextBoxFor(model => model.Name)
+</p>
+
+<p>
+  <label>Salary</label>
+  @Html.TextBoxFor(model => model.Salary)
+</p>
+
+<div id="phoneNumbers">
+  @Html.EditorFor(model => model.Phones)
+</div>

@@ -1,0 +1,19 @@
+﻿@model NestedModels.Models.Extension
+
+@Html.HiddenFor(model => model.ExtensionId)
+
+<p>
+  <label>Extension Details</label>
+  @Html.DropDownListFor(model => model.ExtensionDetailsId,                
+                  new List<SelectListItem> { 
+                       new SelectListItem { Value = "0" , Text = "Option A" },
+                       new SelectListItem { Value = "1" , Text = "Option B" },
+                       new SelectListItem { Value = "2" , Text = "Option C" }
+                    },
+                  new { @class="myselect"})
+</p>
+
+<p>
+  <label>Count</label>
+  @Html.TextBoxFor(model => model.Count)
+</p>

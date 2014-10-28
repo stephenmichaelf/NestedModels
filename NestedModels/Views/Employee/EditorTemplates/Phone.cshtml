@@ -1,0 +1,13 @@
+﻿@model NestedModels.Models.Phone
+
+<div class="phoneNumber">
+    <p>
+        <label>Phone Number</label>
+        @Html.TextBoxFor(x => x.PhoneNumber)
+        @Html.HiddenFor(x => x.DeletePhone, new { @class = "mark-for-delete" })
+    </p>
+    
+    <div id="extensions">
+        @Html.EditorFor(model => model.Extensions)
+    </div>
+</div>
