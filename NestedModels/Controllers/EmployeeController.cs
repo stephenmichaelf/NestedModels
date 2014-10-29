@@ -1,9 +1,5 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Data;
-using System.Data.Entity;
+﻿using System.Data;
 using System.Linq;
-using System.Web;
 using System.Web.Mvc;
 using NestedModels.Models;
 
@@ -40,7 +36,7 @@ namespace NestedModels.Controllers
         public ActionResult Create()
         {
             var employee = new Employee();
-            employee.CreatePhoneNumbers(3);
+            employee.CreatePhoneNumbers(1);
 
             return View(employee);
         }

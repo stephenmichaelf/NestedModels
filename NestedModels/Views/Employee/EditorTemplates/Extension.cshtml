@@ -2,18 +2,17 @@
 
 @Html.HiddenFor(model => model.ExtensionId)
 
-<p>
-  <label>Extension Details</label>
-  @Html.DropDownListFor(model => model.ExtensionDetailsId,                
-                  new List<SelectListItem> { 
-                       new SelectListItem { Value = "0" , Text = "Option A" },
-                       new SelectListItem { Value = "1" , Text = "Option B" },
-                       new SelectListItem { Value = "2" , Text = "Option C" }
-                    },
-                  new { @class="myselect"})
+<div class="extension">
+    <p style="background-color: lightblue">
+    <label>Extension Details</label>
+    @Html.DropDownListFor(model => model.ExtensionDetailsId,                
+        new List<SelectListItem> { 
+            new SelectListItem { Value = "0" , Text = "Option A" },
+            new SelectListItem { Value = "1" , Text = "Option B" },
+            new SelectListItem { Value = "2" , Text = "Option C" }
+        },
+        new { @class="myselect"})
+    <label>Count</label>
+    @Html.TextBoxFor(model => model.Count)
 </p>
-
-<p>
-  <label>Count</label>
-  @Html.TextBoxFor(model => model.Count)
-</p>
+</div>
