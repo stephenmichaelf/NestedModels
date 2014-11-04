@@ -1,0 +1,22 @@
+﻿@using NestedModels.Helpers
+@model NestedModels.Models.ZoneViewModel
+
+@Html.EditorFor(model => model.Name)
+
+@using (Html.BeginAjaxContentValidation("form0"))
+{
+    using (Html.BeginCollectionItem("Zones"))
+    {
+        @Html.EditorFor(model => model.Name)
+        @Html.ValidationMessageFor(model => model.Name)
+    }
+}
+
+
+<fieldset>
+    <legend>Widgets</legend>
+    <div class="widgets">
+        <input type="button" class="add-widget" data-containerPrefix="@ViewData["ContainerPrefix"]"  value="Add Widget" /><br />
+        @Html.EditorFor(model => model.Widgets)
+    </div>
+</fieldset>

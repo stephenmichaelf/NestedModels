@@ -15,7 +15,7 @@ namespace NestedModels.Models
 
         public virtual ICollection<Phone> Phones { get; set; }
 
-        internal void CreatePhoneNumbers(int count = 1)
+        internal void CreatePhoneNumbers(int count = 2)
         {
             for (int i = 0; i < count; i++)
             {

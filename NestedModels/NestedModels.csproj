@@ -189,6 +189,8 @@
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
+    <Compile Include="Helpers\HtmlClientSideValidationExtensions.cs" />
+    <Compile Include="Helpers\HtmlPrefixScopeExtensions.cs" />
     <Compile Include="Migrations\201410281557019_InitialMigration.cs" />
     <Compile Include="Migrations\201410281557019_InitialMigration.Designer.cs">
       <DependentUpon>201410281557019_InitialMigration.cs</DependentUpon>
@@ -204,6 +206,7 @@
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountModels.cs" />
     <Compile Include="Models\Employee.cs" />
+    <Compile Include="Models\PageViewModel.cs" />
     <Compile Include="Models\Phone.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
@@ -331,6 +334,11 @@
     <Content Include="Views\Extensions\Create.cshtml" />
     <Content Include="Views\Extensions\Edit.cshtml" />
     <Content Include="Views\Extensions\Delete.cshtml" />
+    <Content Include="Views\Home\Page.cshtml" />
+    <Content Include="Views\Home\EditorTemplates\ZoneViewModel.cshtml" />
+    <Content Include="Views\Home\NewZone.cshtml" />
+    <Content Include="Views\Home\EditorTemplates\WidgetViewModel.cshtml" />
+    <Content Include="Views\Home\NewWidget.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

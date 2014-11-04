@@ -11,22 +11,21 @@
         @Html.EditorFor(model => model.Extensions)
     </div>
     
-    <input id="addExtension" type="button" value="Add Extension" class="btn" />
+    <input class="addExtension" type="button" value="Add Extension" class="btn" />
 
     <p style="background-color: black; min-height: 50px;"></p>
 </div>
 
 <script type="text/javascript">
     //$(document).ready(function () {
-        $("#addExtension").click(function () {
-            //var nextIndex = 3;
+        $(".addExtension").click(function () {
             var extensionDivCount = $("#extensions > div").length;// TODO: instead of #extensions, this should look at the parent, otherwise
+
+            //alert($(this).parent().index());
             // it won't work well when we add multiple phases
 
-            alert(extensionDivCount);
-
-
-            // TODO, replace this with an AJAX call that passes the index and returns a new Extension partial with that index?
+            ////////////
+            ////////////
             var newExtensionDetailsHTML = "<div class='extension'><p style='background-color: lightblue'><label>Extension Details</label>" +
                 "<select class='myselect' data-val='true' data-val-number='The field ExtensionDetailsId must be a number.' " +
                 "data-val-required='The ExtensionDetailsId field is required.' id='Phones_0__Extensions_" +
@@ -41,37 +40,15 @@
                 "__Count' name='Phones[0].Extensions[" +
                 extensionDivCount +
                 "].Count' type='text' value='' /></p></div>";
-
-
             $("#extensions").append(newExtensionDetailsHTML);
+            ////////////
+            ////////////
 
-            //var tdIndex = "<td style='display:none'><input name='PriceableEntityTargetExclusions.Index' type='hidden' value='"
-            //    + index
-            //    + "' /></td>";
-            //var tdRemove = "<td><input id='btnRemoveExclusion' type='button' value='Remove' class='btn' onclick='removeRow("
-            //    + index
-            //    + ")' /></td>";
-            //var tdPriceableEntityId = "<td><label class='control-label' for='txtPriceableEntityId_"
-            //    + index
-            //    + "''>Priceable Entity ID</label>&nbsp;<input id='txtPriceableEntityId_"
-            //    + index
-            //    + "' name='PriceableEntityTargetExclusions["
-            //    + index + "].PriceableEntityId' /></td>";
-            //var tdQuantity = "<td><label class='control-label' for='txtQuantity_"
-            //    + index
-            //    + "'>Quantity</label>&nbsp;<input id='txtQuantity_"
-            //    + index
-            //    + "' name='PriceableEntityTargetExclusions["
-            //    + index
-            //    + "].Quantity' /></td>";
-
-            //var trNew = "<tr id='trExclusion_" + index + "'>"
-            //            + tdIndex
-            //            + tdRemove
-            //            + tdPriceableEntityId
-            //            + tdQuantity
-            //            + "</tr>";
-            //$("#tblExclusions tr:last").before(trNew);
+            //var itemIndex = $("#container input.iHidden").length;
+            //e.preventDefault();
+@*            $.get("@Url.Action("NewExtension", "Employee")/" + extensionDivCount, function (data) {
+                $("#extensions").append(data);
+            });*@
         });
 
         function removeRow(index) {

@@ -1,0 +1,59 @@
+﻿@model NestedModels.Models.PageViewModel
+
+@{
+    ViewBag.Title = "Page";
+}
+
+<h2>Page</h2>
+
+@using (Html.BeginForm())
+{
+    @Html.AntiForgeryToken()
+    @Html.ValidationSummary(true)
+    
+    @Html.EditorFor(model => model.Name)
+
+    <input id="add-zone" type="button" value="Add Zone"/>
+    
+    <fieldset>
+        <legend>Zones</legend>
+        <div id="zones">
+            @Html.EditorFor(model => model.Zones)
+        </div>
+    </fieldset>
+    
+    <input type="submit" value="Save" />
+}
+
+
+
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+
+    <script type="text/javascript">
+        $(document).ready(function () {
+            $("#add-zone").click(function () {
+                $.ajax({
+                    url: "GetNewZone",
+                    success: function (data) {
+                        $("#zones").append(data);
+                        //Sys.Mvc.FormContext._Application_Load();
+                    }
+                });
+            });
+
+            $(".add-widget").live("click", function() {
+                var addButton = $(this);
+
+                $.ajax({
+                    url: "GetNewWidget",
+                    data: { "containerPrefix": addButton.data("containerPrefix") },
+                    success: function(data) {
+                        addButton.closest(".widgets").append(data);
+                        //Sys.Mvc.FormContext._Application_Load();
+                    }
+                });
+            });
+        });
+</script>
+}

@@ -36,7 +36,7 @@ namespace NestedModels.Controllers
         public ActionResult Create()
         {
             var employee = new Employee();
-            employee.CreatePhoneNumbers(1);
+            employee.CreatePhoneNumbers(2);
 
             return View(employee);
         }
@@ -57,6 +57,14 @@ namespace NestedModels.Controllers
 
             return View(employee);
         }
+
+        //public ActionResult NewExtension(int id)
+        //{
+        //    var extension = new Extension();
+        //    extension.ExtensionId = id;
+
+        //    return View("EditorTemplates/Extension", extension);
+        //}
 
         //
         // GET: /Employee/Edit/5

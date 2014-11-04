@@ -1,0 +1,12 @@
+﻿@using NestedModels.Helpers
+@model NestedModels.Models.WidgetViewModel
+
+@using (Html.BeginAjaxContentValidation("form0"))
+{
+    using (Html.BeginCollectionItem("Widgets"))
+    {
+        @Html.EditorFor(model => model.Name)
+        @Html.ValidationMessageFor(model => model.Name)
+        <br />
+    }
+}
