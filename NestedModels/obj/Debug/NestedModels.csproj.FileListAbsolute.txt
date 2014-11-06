@@ -86,3 +86,4 @@ D:\git\steve\NestedModels\NestedModels\obj\Debug\NestedModels.Migrations.Initial
 D:\git\steve\NestedModels\NestedModels\obj\Debug\NestedModels.csproj.GenerateResource.Cache
 D:\git\steve\NestedModels\NestedModels\obj\Debug\NestedModels.Migrations.InitialMigration2.resources
 D:\git\steve\NestedModels\NestedModels\obj\Debug\NestedModels.Migrations.InitialMigration3.resources
+D:\git\steve\NestedModels\NestedModels\obj\Debug\NestedModels.csprojResolveAssemblyReference.cache

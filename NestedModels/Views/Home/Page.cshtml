@@ -44,7 +44,8 @@
 
             $(".add-widget").live("click", function() {
                 var addButton = $(this);
-
+                alert($(this).index());
+                alert($(this).parent().index());
                 $.ajax({
                     url: "GetNewWidget",
                     data: { "containerPrefix": addButton.data("containerPrefix") },

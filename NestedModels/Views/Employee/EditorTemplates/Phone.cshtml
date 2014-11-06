@@ -1,13 +1,13 @@
 ﻿@model NestedModels.Models.Phone
 
-<div class="phoneNumber" style="background-color: lightcoral">
+<div class="phoneNumber" style="background-color: lightcoral;margin-left: 25px;">
     <p>
         <label>Phone Number</label>
         @Html.TextBoxFor(x => x.PhoneNumber)
         @Html.HiddenFor(x => x.DeletePhone, new { @class = "mark-for-delete" })
     </p>
     
-    <div id="extensions">
+    <div class="extensions" style="margin-left: 25px;">
         @Html.EditorFor(model => model.Extensions)
     </div>
     
@@ -24,31 +24,26 @@
             //alert($(this).parent().index());
             // it won't work well when we add multiple phases
 
-            ////////////
-            ////////////
-            var newExtensionDetailsHTML = "<div class='extension'><p style='background-color: lightblue'><label>Extension Details</label>" +
+            var newExtensionDetailsHTML = "<div class='extension'>" +
+                "<p style='background-color: lightblue'>" +
+                "<label>Extension Details</label>" +
                 "<select class='myselect' data-val='true' data-val-number='The field ExtensionDetailsId must be a number.' " +
                 "data-val-required='The ExtensionDetailsId field is required.' id='Phones_0__Extensions_" +
                 extensionDivCount +
                 "__ExtensionDetailsId' " +
                 "name='Phones[0].Extensions[" +
                 extensionDivCount +
-                "].ExtensionDetailsId'><option selected='selected' value='0'>Option A</option>" +
-                "<option value='1'>Option B</option><option value='2'>Option C</option></select><label>Count</label>" +
+                "].ExtensionDetailsId'>" +
+                "<option selected='selected' value='0'>Option A</option>" +
+                "<option value='1'>Option B</option>" +
+                "<option value='2'>Option C</option></select>" +
+                "<label>Count</label>" +
                 "<input id='Phones_0__Extensions_" +
                 extensionDivCount +
                 "__Count' name='Phones[0].Extensions[" +
                 extensionDivCount +
                 "].Count' type='text' value='' /></p></div>";
-            $("#extensions").append(newExtensionDetailsHTML);
-            ////////////
-            ////////////
-
-            //var itemIndex = $("#container input.iHidden").length;
-            //e.preventDefault();
-@*            $.get("@Url.Action("NewExtension", "Employee")/" + extensionDivCount, function (data) {
-                $("#extensions").append(data);
-            });*@
+            $(".extensions").append(newExtensionDetailsHTML);
         });
 
         function removeRow(index) {
