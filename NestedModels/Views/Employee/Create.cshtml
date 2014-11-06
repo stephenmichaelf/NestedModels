@@ -27,13 +27,55 @@
     $(document).ready(function () {
         $(".addPhone").click(function (event) {
             event.preventDefault();
-            var newPhoneHtml = "<div>New Phone</div>";
-            $("#phoneNumbers").append(newPhoneHtml);
+            var indexOfNextPhoneNumber = $("#phoneNumbers > .phoneNumber").length;
+
+            $("#phoneNumbers").append(getNewPhoneHtml(indexOfNextPhoneNumber));
         });
 
-        function removeRow(index) {
-            var rowId = "#trExclusion_" + index;
-            $(rowId).remove();
+        function getNewPhoneHtml(index) {
+            var newPhoneHtml = "";
+
+            newPhoneHtml += "<div class='phoneNumber' style='background-color: lightcoral;margin-left: 25px;'>" +
+                "<p><label>Phone Number</label>" +
+                "<input id='Phones_" + index + "__PhoneNumber' name='Phones[" + index + "].PhoneNumber' type='text' value=''>" +
+                "<input class='mark-for-delete' data-val='true' data-val-required='The DeletePhone field is required.' " +
+                "id='Phones_" + index + "__DeletePhone' name='Phones[" + index + "].DeletePhone' type='hidden' value='False'></p>" +
+                getNewExtensionHtml(index, 0) +
+                getNewExtensionHtml(index, 1) +
+                getNewExtensionHtml(index, 2) +
+                "<input class='addExtension' type='button' value='Add Extension'><p style='background-color: black; min-height: 50px;'></p></div>";
+            return newPhoneHtml;
+        }
+
+        $(document).on('click', '.addExtension', function () {
+            var extensionDivCount = $(this).parent("div").children(".extensions").children(".extension").length;
+            var phoneIndex = $(this).parent().prevAll().length;
+
+            $(this).before(getNewExtensionHtml(phoneIndex, extensionDivCount));
+        });
+
+        function getNewExtensionHtml(phoneIndex, extensionIndex) {
+            var newExtensionHtml = "<div class='extension'>" +
+                "<p style='background-color: lightblue; margin-left: 25px;'>" +
+                "<label>Extension Details</label>" +
+                "<select class='myselect' data-val='true' data-val-number='The field ExtensionDetailsId must be a number.' " +
+                "data-val-required='The ExtensionDetailsId field is required.' id='Phones_" + phoneIndex + "__Extensions_" +
+                extensionIndex +
+                "__ExtensionDetailsId' " +
+                "name='Phones[" + phoneIndex + "].Extensions[" +
+                extensionIndex +
+                "].ExtensionDetailsId'>" +
+                "<option selected='selected' value='0'>Option A</option>" +
+                "<option value='1'>Option B</option>" +
+                "<option value='2'>Option C</option></select>" +
+                "<label>Count</label>" +
+                "<input id='Phones_" + phoneIndex + "__Extensions_" +
+                extensionIndex +
+                "__Count' name='Phones[" + phoneIndex + "].Extensions[" +
+                extensionIndex +
+                "].Count' type='text' value='' /></p></div>";
+
+            return newExtensionHtml;
         }
     });
 </script>
