@@ -1,0 +1,75 @@
+variables:
+  the_token: true
+
+steps:
+
+- ${{ if eq(repositories['self'].DefaultBranch, 'refs/heads/master') }}:
+  - script: echo Hello, world 11111!
+    displayName: default branch is refs/heads/master
+
+- ${{ if eq(repositories['self'].Ref, 'refs/heads/master') }}:
+  - script: echo Hello, world 11111!
+    displayName: ref is refs/heads/master
+
+- ${{ if eq(repositories['self'].Ref, repositories['self'].DefaultBranch) }}:
+  - script: echo Hello, world 11111!
+    displayName: current is default
+
+- ${{ if ne(repositories['self'].Id, 'foo') }}:
+  - script: echo Hello, world 22222!
+
+- ${{ if eq(repositories['self'].DefaultBranch, 'refs/heads/not-master-default-branch') }}:
+  - script: echo Hello, world 11111!
+    displayName: default branch is refs/heads/not-master-default-branch
+
+- ${{ if eq(repositories.self.DefaultBranch, 'refs/heads/not-master-default-branch') }}:
+  - script: echo Hello, world 11111!
+    displayName: default branch is refs/heads/not-master-default-branch SET USING repos.self
+
+- ${{ if eq(repositories['self'].DefaultBranch, 'refs/heads/master') }}:
+  - script: echo Hello, world 11111!
+    displayName: default branch is refs/heads/master
+
+# TODO: try self.id too.
+
+- script: echo ref value= ${{ repositories['self'].Ref }} -- ${{ repositories['self'].Alias }} -- ${{ repositories['self'].Alias }}
+  displayName: 'Echo ref value'
+
+- script: echo default branch= ${{ repositories['self'].DefaultBranch }}
+  displayName: 'Echo defaultBranch value'
+
+- script: echo Hello, world!
+  displayName: 'Source branch is refs/heads/master'
+  condition: eq(variables['Build.SourceBranch'], 'refs/heads/master')
+
+- ${{ if eq(variables['Build.SourceBranch'], 'refs/heads/master') }}:
+  - script: echo Build source branch is refs head ma ster from if statement
+
+# - script: echo Hello, world!
+#   displayName: 'repositories self .id is ?'
+#   condition: eq(repositories['self'].Id, '?')
+
+# - script: echo Hello, world!
+#   displayName: 'repositories['self'].defaultBranch is refs/heads/master'
+#   condition: eq(repositories['self'].defaultBranch, 'refs/heads/master')
+
+# - script: echo Hello, world!
+#   displayName: 'repositories.self.defaultBranch is refs/heads/master'
+#   condition: eq(repositories.self.defaultBranch, 'refs/heads/master')
+
+# - script: |
+#     echo Add other tasks to build, test, and deploy your project.
+#     echo See https://aka.ms/yaml
+#     echo ref= ${{ repositories['self'].alias }}
+#     echo ref= ${{ repositories['self'].ref }}
+#     echo defaultBranch= ${{ repositories['self'].defaultBranch }}
+#     echo System.Debug = $(System.Debug)
+#     echo variables['the_token'] = ${{ variables['the_token'] }}
+#     echo variables.the_token = ${{ variables.the_token }}
+#     echo variables.the_token with braces = $[ variables.the_token ]
+#     echo $( the _ token )= $(the_token)
+#     echo Build.SourceBranch = $(Build.SourceBranch)
+#   displayName: 'Run a multi-line script'
+
+# - script: echo ${{ variables['the_token'] }}
+#   displayName: variable the_token with double braces
